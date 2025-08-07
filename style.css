@@ -1,0 +1,114 @@
+:root {
+    --sidebar-width: 250px;
+    --sidebar-transition-duration: 0.3s;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    transition: margin-left var(--sidebar-transition-duration) ease;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100%;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    transform: translateX(-100%);
+    transition: transform var(--sidebar-transition-duration) ease;
+    z-index: 100;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #4a647d;
+    margin-bottom: 20px;
+}
+
+.logo-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.nav-links li a:hover {
+    background-color: #34495e;
+}
+
+.nav-links i {
+    margin-right: 10px;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    transition: margin-left var(--sidebar-transition-duration) ease;
+}
+
+body.sidebar-open .main-content {
+    margin-left: var(--sidebar-width);
+}
+
+.toggle-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 101;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-button:hover {
+    background-color: #2980b9;
+}
+
+/* Bonus: Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+    body.sidebar-open .main-content {
+        margin-left: 200px;
+    }
+    .toggle-button {
+        left: 10px;
+    }
+}
